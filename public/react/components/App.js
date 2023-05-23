@@ -18,7 +18,6 @@ export const App = () => {
 			const response = await fetch(`${apiURL}/items`);
 			const itemData = await response.json();
 			setCategory(itemData);
-			console.log("item" + itemData)
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
@@ -29,22 +28,17 @@ export const App = () => {
 			const response = await fetch(`${apiURL}/items/${category}`);
 			const categoryData = await response.json();
 			setCategory(categoryData);
-			console.log("item" + categoryData)
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
 	}
 
+	console.log(category)
+	
 	useEffect(() => {
 		fetchItems();
 		fetchCategory();
 	}, []);
-
-	console.log(items);
-	console.log(category);
-
-
-
 
 	return (
 		<main>
