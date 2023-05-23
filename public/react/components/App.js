@@ -1,57 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import {ItemList} from "./ItemList";
+import { OneItem } from "./OneItem"
 import apiURL from '../api';
 
 
 export const App = () => {
-	const [items, setItems] = useState([]);
+
+	// Setting Use States for category and visiblilty 
 	const [category, setCategory] = useState([]);
 	const [isCategoryVisible, setIsCategoryVisible] = useState(false);
 	const [isMenClothingVisible, setIsMenClothingVisible] = useState(false);
 	const [isWomenClothingVisible, setIsWomenClothingVisible] = useState(false);
 	const [isJeweleryVisible, setIsJeweleryVisible] = useState(false);
 	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
-	
 
-	async function fetchItems(){
-		try {
-			const response = await fetch(`${apiURL}/items`);
-			const itemData = await response.json();
-			setCategory(itemData);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-	}
-
+	// Fetch either all items or by category
 	async function fetchCategory(category){
 		try {
-			const response = await fetch(`${apiURL}/items/${category}`);
+			const response = await fetch(`${apiURL}/items/category/${category}`);
 			const categoryData = await response.json();
 			setCategory(categoryData);
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
 	}
-
-	console.log(category)
 	
+	// Any change to a ther page Use Effect is updated updated by fetch the api
 	useEffect(() => {
-		fetchItems();
 		fetchCategory();
 	}, []);
 
+	/* still need to fix view so that only one item is on screen when selected
+	// TODO:
+			pass the useState as a prop  
+			const [isOneItemVisible, setIsOneItmeVisible] = useState(false); <-- this is on ItemList currently
+			add to the button for individual item
+			*/
 	return (
 		<main>
 			<h1 className="title">Current Inventory</h1>
 			<div className="inventoryButtons">
-				<button onClick={() => {fetchItems(), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
+				<button onClick={() => {fetchCategory(""), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
 				<button onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
 				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
 				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
 				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
 			</div>
-
-			{/* <ItemList items={items}/> */}
+			
 			<ItemList items={category}/>
 		</main>
 	)
