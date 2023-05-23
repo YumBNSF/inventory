@@ -32,6 +32,21 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
+router.post("/", async (req, res, next) => {
+    try{
+        //TODO: check if item exists, otherwise add it to DB
+        const addItem = await Item.FindOrCreate( {where: {
+            title: req.body.title
+        }});
+        res.send(addItem);
+    
+    }
+    catch(error)
+    {
+        next(error)
+    }
+})
+
 
 
 module.exports = router;
