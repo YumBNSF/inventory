@@ -17,7 +17,7 @@ export const App = () => {
 		try {
 			const response = await fetch(`${apiURL}/items`);
 			const itemData = await response.json();
-			setItems(itemData);
+			setCategory(itemData);
 			console.log("item" + itemData)
 		} catch (err) {
 			console.log("Oh no an error! ", err)
@@ -28,7 +28,6 @@ export const App = () => {
 		try {
 			const response = await fetch(`${apiURL}/items/${category}`);
 			const categoryData = await response.json();
-
 			setCategory(categoryData);
 			console.log("item" + categoryData)
 		} catch (err) {
@@ -49,9 +48,9 @@ export const App = () => {
 
 	return (
 		<main>
-			<h1 className="title">All Products</h1>
+			<h1 className="title">Current Inventory</h1>
 			<div className="inventoryButtons">
-				{/* <button onClick={() => {fetchItems(), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button> */}
+				<button onClick={() => {fetchItems(), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
 				<button onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
 				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
 				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
