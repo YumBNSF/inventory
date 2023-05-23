@@ -25,7 +25,7 @@ router.get("/:category", async (req, res, next) => {
 // GET /id  one item
 router.get("/:id", async (req, res, next) => {
     try {
-        const items = await Item.findAll({where : {id:req.params.id}});
+        const items = await Item.findOne({where : {id:req.params.id}});
         res.send(items);
     } catch (error) {
         next(error);
