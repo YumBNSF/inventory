@@ -6,6 +6,12 @@ import apiURL from '../api';
 export const App = () => {
 	const [items, setItems] = useState([]);
 	const [category, setCategory] = useState([]);
+	const [isCategoryVisible, setIsCategoryVisible] = useState(false);
+	const [isMenClothingVisible, setIsMenClothingVisible] = useState(false);
+	const [isWomenClothingVisible, setIsWomenClothingVisible] = useState(false);
+	const [isJeweleryVisible, setIsJeweleryVisible] = useState(false);
+	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
+	
 
 	async function fetchItems(){
 		try {
@@ -43,16 +49,16 @@ export const App = () => {
 
 	return (
 		<main>
-			<h1 className = "title">Inventory</h1>
-			<div className = "inventoryButtons">
-				<button onClick ={() => fetchItems()}><h3>All Categories</h3></button>
-				<button onClick = {() => fetchCategory("men's clothing")}><h3>Men's Clothing</h3></button>
-				<button onClick = {() => fetchCategory("women's clothing")}><h3>Women's Clothing</h3></button>
-				<button onClick = {() => fetchCategory("jewelery")}><h3>Jewelery</h3></button>
-				<button onClick = {() => fetchCategory("electronics")}><h3>Electronics</h3></button>
+			<h1 className="title">All Products</h1>
+			<div className="inventoryButtons">
+				{/* <button onClick={() => {fetchItems(), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button> */}
+				<button onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
+				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
+				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
+				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
 			</div>
 
-			<ItemList items={items}/>
+			{/* <ItemList items={items}/> */}
 			<ItemList items={category}/>
 		</main>
 	)
