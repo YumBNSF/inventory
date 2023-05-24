@@ -8,7 +8,7 @@ export const OneItem = ({itemReturn}) => {
 
     // onclick function for the delete button
     async function deleteSingleItem(itemId){
-        await fetch(`${apiURL}/${itemId}`, {
+        await fetch(`${apiURL}/items/${itemId}`, {
             method: 'DELETE'
         });
         // sets useState to true if the button is clicked
