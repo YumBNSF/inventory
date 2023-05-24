@@ -32,6 +32,7 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
+// POST adding an item
 router.post("/", async (req, res, next) => {
     try{
         const [item, created] = await Item.findOrCreate( {
@@ -58,6 +59,39 @@ router.post("/", async (req, res, next) => {
     }
 })
 
+// PUT updating an item
+router.put("/:id", async (req, res, next) => {
+    try{
+        const item = await Item.update( {
+            where: {id: req.body.id},
+            defaults:{
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                category: req.body.category,
+                image: req.body.image
+            } 
+    });
+    }
+    catch(error)
+    {
+        next(error)
+    }
+})
+
+// DELETE a show
+router.delete("/:id", async (req, res, next) => {
+    try {
+      const items = await Item.destroy({ where: { id: req.params.id } });
+      if (items === 0) {
+        throw new Error("No item deleted");
+      } else {
+        res.sendStatus(200);
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
 
 
 module.exports = router;
