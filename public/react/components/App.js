@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {ItemList} from "./ItemList";
 import { OneItem } from "./OneItem"
+import Form from "./Form"
 import apiURL from '../api';
 
 
@@ -13,6 +14,10 @@ export const App = () => {
 	const [isWomenClothingVisible, setIsWomenClothingVisible] = useState(false);
 	const [isJeweleryVisible, setIsJeweleryVisible] = useState(false);
 	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
+
+// Use states used with Form to ADD item
+	const[newPost, setNewPost] = useState(false);
+
 
 	// Fetch either all items or by category
 	async function fetchCategory(category){
@@ -45,6 +50,7 @@ export const App = () => {
 				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
 				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
 				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
+				<Form setNewPost={setNewPost}/>
 			</div>
 			
 			<ItemList items={category}/>
