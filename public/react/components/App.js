@@ -22,9 +22,17 @@ export const App = () => {
 	// Fetch either all items or by category
 	async function fetchCategory(category){
 		try {
-			const response = await fetch(`${apiURL}/items/category/${category}`);
-			const categoryData = await response.json();
-			setCategory(categoryData);
+		
+			if(category === ""){
+				const response = await fetch(`${apiURL}/items`);
+				const categoryData = await response.json();
+				setCategory(categoryData);
+			   } else {
+				const response = await fetch(`${apiURL}/items/category/${category}`);
+				const categoryData = await response.json();
+				setCategory(categoryData);
+			   }
+
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
