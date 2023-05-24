@@ -34,12 +34,23 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
     try{
-        //TODO: check if item exists, otherwise add it to DB
-        const addItem = await Item.FindOrCreate( {where: {
-            title: req.body.title
-        }});
-        res.send(addItem);
-    
+        const [item, created] = await Item.findOrCreate( {
+            where: {title: req.body.title},
+            defaults:{
+                price: req.body.price,
+                description: req.body.description,
+                category: req.body.category,
+                image: req.body.image
+            } 
+    });
+    if (!created){
+        console.log("Item Exists!")
+        res.send(item);
+    }
+    else if(created){
+        console.log("new item created!")
+        res.send("new item created!")
+    }
     }
     catch(error)
     {
