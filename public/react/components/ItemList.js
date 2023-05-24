@@ -5,7 +5,7 @@ import { OneItem } from './OneItem';
 export const ItemList = ({items}) => {
 
     const [itemReturn, setItemReturn] = useState([])
-    const [isOneItemVisible, setIsOneItmeVisible] = useState(false);
+    // const [isOneItemVisible, setIsOneItmeVisible] = useState(false);
 
     // cycles through array of items to return correct item according to map index
  function renderItemBasedOnIndex(indexOfItem, itemArray){

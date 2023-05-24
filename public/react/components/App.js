@@ -16,15 +16,22 @@ export const App = () => {
 	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
 
 // Use states used with Form to ADD item
-	const[newPost, setNewPost] = useState(false);
+	const[newItem, setNewItem] = useState(false);
 
 
 	// Fetch either all items or by category
 	async function fetchCategory(category){
 		try {
-			const response = await fetch(`${apiURL}/items/category/${category}`);
-			const categoryData = await response.json();
-			setCategory(categoryData);
+			if(category === ""){
+				const response = await fetch(`${apiURL}/items/${category}`);
+				const categoryData = await response.json();
+				setCategory(categoryData);
+			}else {
+				const response = await fetch(`${apiURL}/items/category/${category}`);
+				const categoryData = await response.json();
+				setCategory(categoryData);
+			}
+
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
@@ -49,8 +56,8 @@ export const App = () => {
 				<button onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
 				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
 				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
-				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
-				<Form setNewPost={setNewPost}/>
+				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button><br/>
+				<Form setNewItem={setNewItem}/>
 			</div>
 			
 			<ItemList items={category}/>

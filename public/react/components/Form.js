@@ -1,7 +1,7 @@
 import { useState } from "react";
 import apiURL from '../api';
 
-function Form(setNewItem)
+function Form({setNewItem})
 
     {
         const [title, setTitle] = useState("");
@@ -26,7 +26,7 @@ function Form(setNewItem)
               body: JSON.stringify(newItem)
             });
         
-            setNewPost(true)
+            setNewItem(true);
             setTitle("");
             setDescription("");
             setCategory("");
