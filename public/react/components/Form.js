@@ -1,7 +1,7 @@
 import { useState } from "react";
 import apiURL from '../api';
 
-function Form(setNewItem)
+function Form({setNewItem})
 
     {
         const [title, setTitle] = useState("");
