@@ -12,12 +12,14 @@ export const ItemList = ({items}) => {
     for(let i = 0; i < itemArray.length; ++i){
      if(i === indexOfItem){
         setItemReturn(itemArray[i]);
+         return(<><h1>hi</h1></>)
      }
     }
    }
 
     return (
         <>
+            <OneItem itemReturn={itemReturn}/>
          {/*creates a button for each item based on index/key*/}
         {
          items.map((item, idx) => {
@@ -30,7 +32,7 @@ export const ItemList = ({items}) => {
         }
       
          {/*passes prop data from useSate to child*/}
-         <OneItem itemReturn={itemReturn}/>
+
        </>
        );
 }
