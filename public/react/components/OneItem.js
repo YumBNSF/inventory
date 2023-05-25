@@ -1,10 +1,46 @@
 import React, {useEffect, useState} from 'react';
 import apiURL from "../api";
 
+
+
+
 export const OneItem = ({itemReturn}) => {
     // for dropdown
     const [open, setOpen] = useState(false);
+    const [editOpen, setEditOpen] = useState(false); 
     const [itemsBeenDeleted, setItemsBeenDeleted] = useState(false)
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [image, setImage] = useState("");
+    const [price, setPrice] = useState("");
+    const[newPost, setNewPost] = useState(false);
+
+
+
+    async function submitHandler(e) {
+        e.preventDefault();
+        const newItem = {
+          title,
+          description,
+          category,
+          image,
+          price
+        };
+
+        await fetch(`${apiURL}/items`, {
+          method: "PUT",
+          headers: {"Content-type" : "application/json"},
+          body: JSON.stringify(newItem)
+        });
+    
+        setNewPost(true)
+        setTitle("");
+        setDescription("");
+        setCategory("");
+        setImage("");
+        setPrice("");
+      }
 
     // onclick function for the delete button
     async function deleteSingleItem(itemId){
@@ -15,10 +51,16 @@ export const OneItem = ({itemReturn}) => {
         setItemsBeenDeleted(true);
     }
 
+
     // onclick function for dropdown
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    // onclick function for edit dropdown
+    const handleEditOpen = () => {
+        setEditOpen(!editOpen);
+    }
     
     // determines if there is an item by targeting item id, b/c all items have id
     if(!itemReturn.id){
@@ -46,10 +88,42 @@ export const OneItem = ({itemReturn}) => {
                         {open ? (
                             <div>
                                 <button onClick={()=>deleteSingleItem(itemReturn.id)}>Delete</button>
-                                <button onClick={()=>deleteSingleItem(itemReturn.id)}>Edit</button>
-                            </div>
-                            ):(
-                            <div></div>)}
+                                <button onClick={handleEditOpen}>Edit</button>
+                                {editOpen ? ( 
+                                <form onSubmit = {submitHandler}>
+                                    <input 
+                                            type = "text" 
+                                            placeholder = "Title" 
+                                            value = {title}
+                                            onChange = {(e) => setTitle(e.target.value)}
+                                        />
+                                        <input
+                                            type = "text" 
+                                            placeholder = "Description" 
+                                            value = {description}
+                                            onChange = {(e) => setDescription(e.target.value)}
+                                        />
+                                        <input
+                                            type = "text" 
+                                            placeholder="Category" 
+                                            value = {category}
+                                            onChange = {(e) => setCategory(e.target.value)}
+                                        />  
+                                        <input
+                                            type = "text" 
+                                            placeholder="Image" 
+                                            value = {image}
+                                            onChange = {(e) => setImage(e.target.value)}
+                                        />            
+                                        <input
+                                            type = "text" 
+                                            placeholder="Price" 
+                                            value = {price}
+                                            onChange = {(e) => setPrice(e.target.value)}
+                                        />                  
+                    <button type = "Submit">Submit</button>
+                    </form>):(<div></div>)}
+                            </div>):(<div></div>)}
 
                     </div>
                 </div>
