@@ -16,7 +16,7 @@ export const App = () => {
 	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
 
 // Use states used with Form to ADD item
-	const[newPost, setNewPost] = useState(false);
+	const[newItem, setNewItem] = useState(false);
 
 
 	// Fetch either all items or by category
@@ -58,7 +58,7 @@ export const App = () => {
 				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
 				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
 				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
-				<Form setNewPost={setNewPost}/>
+				<Form setNewItem={setNewItem}/>
 			</div>
 			
 			<ItemList items={category}/>
