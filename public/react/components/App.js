@@ -60,7 +60,6 @@ export const App = () => {
 				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
 				<Form setNewItem={setNewItem}/>
 			</div>
-			
 			<ItemList items={category}/>
 		</main>
 	)
