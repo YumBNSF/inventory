@@ -10,7 +10,10 @@
 
 .title{
   text-align: center;
-  margin-bottom: 1em;
+  font-size: 4rem;
+  margin-top: .5em;
+  margin-bottom: .75em;
+  color: lightslategray;
 }
 
 .inventoryButtons{
@@ -28,5 +31,68 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 1.5em;
+}
+
+.menuButton {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.menuAddButton {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.submitButton {
+  height: .5em;
+  padding: 1em;
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.deleteEditButton {
+  height: .5em;
+  padding: 1em;
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.buttonChange{
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  color: white;
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.itemButton {
+  border: none;
+  border-radius: 6px;
+  width: 50%;
+  height: 40vh;
 }

@@ -24,7 +24,7 @@ export const ItemList = ({items}) => {
         {
          items.map((item, idx) => {
           return(
-           <button key={idx} onClick = {()=> {renderItemBasedOnIndex(idx, items) }}>
+           <button className = "itemButton" key={idx} onClick = {()=> {renderItemBasedOnIndex(idx, items) }}>
             <Item item={item} key={idx} />
            </button>
           );
