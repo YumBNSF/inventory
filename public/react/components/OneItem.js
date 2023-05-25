@@ -19,6 +19,7 @@ export const OneItem = ({itemReturn}) => {
 
 
     async function submitHandler(e) {
+
         e.preventDefault();
         const newItem = {
           title,
@@ -28,7 +29,7 @@ export const OneItem = ({itemReturn}) => {
           price
         };
 
-        await fetch(`${apiURL}/items`, {
+        await fetch(`${apiURL}/items/${itemReturn.id}`, {
           method: "PUT",
           headers: {"Content-type" : "application/json"},
           body: JSON.stringify(newItem)

@@ -62,16 +62,12 @@ router.post("/", async (req, res, next) => {
 // PUT updating an item
 router.put("/:id", async (req, res, next) => {
     try{
-        const item = await Item.update( {
-            where: {id: req.body.id},
-            defaults:{
-                title: req.body.title,
-                price: req.body.price,
-                description: req.body.description,
-                category: req.body.category,
-                image: req.body.image
-            } 
+        const item = await Item.update(req.body,{
+            where: {id: req.params.id},
+
+
     });
+        res.send("updated")
     }
     catch(error)
     {
