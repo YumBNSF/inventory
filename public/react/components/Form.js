@@ -67,7 +67,7 @@ function Form({setNewItem})
                         value = {price}
                         onChange = {(e) => setPrice(e.target.value)}
                     />                       
-                    <button type = "Submit">Submit</button>
+                    <button className = "submitButton" type = "Submit">Submit</button>
                 </form>
             )
     }

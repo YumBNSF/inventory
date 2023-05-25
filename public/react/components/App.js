@@ -28,6 +28,7 @@ export const App = () => {
 	}
 	async function fetchCategory(category){
 		try {
+
 			if(category === ""){
 				const response = await fetch(`${apiURL}/items`);
 				const categoryData = await response.json();
@@ -58,14 +59,14 @@ export const App = () => {
 			*/
 	return (
 		<main>
-			<h1 className="title">Current Inventory</h1>
+			<h1 className="title">Flavorful Freighter's Inventory</h1>
 			<div className="inventoryButtons">
-				<button onClick={() => {fetchCategory(""), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
-				<button onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
-				<button onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
-				<button onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
-				<button onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
-				<button onClick={handleOpen}>ADD</button>
+				<button className = "menuButton" onClick={() => {fetchCategory(""), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
+				<button className = "menuButton" onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
+				<button className = "menuButton" onClick={() => {fetchCategory("women's clothing"), setIsWomenClothingVisible(!isWomenClothingVisible)}}>{isWomenClothingVisible ? "Women's Clothing" : "Women's Clothing"}</button>
+				<button className = "menuButton" onClick={() => {fetchCategory("jewelery"), setIsJeweleryVisible(!isJeweleryVisible)}}>{isJeweleryVisible ? "Jewelery" : "Jewelery"}</button>
+				<button className = "menuButton" onClick={() => {fetchCategory("electronics"), setIsElectronicsVisible(!isElectronicsVisible)}}>{isElectronicsVisible ? "Electronics" : "Electronics"}</button>
+				<button className = "menuAddButton" onClick={handleOpen}>Add Item</button>
 				{open ? (
 					<Form setNewItem={setNewItem}/>
 				) :(<></>)}

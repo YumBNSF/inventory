@@ -88,8 +88,8 @@ export const OneItem = ({itemReturn}) => {
                         </button>
                         {open ? (
                             <div>
-                                <button onClick={()=>deleteSingleItem(itemReturn.id)}>Delete</button>
-                                <button onClick={handleEditOpen}>Edit</button>
+                                <button className="deleteEditButton" onClick={()=>deleteSingleItem(itemReturn.id)}>Delete</button>
+                                <button className="deleteEditButton" onClick={handleEditOpen}>Edit</button>
                                 {editOpen ? ( 
                                 <form onSubmit = {submitHandler}>
                                     <input 
