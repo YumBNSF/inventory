@@ -32,7 +32,9 @@ function Form({setNewItem})
             setCategory("");
             setImage("");
             setPrice("");
-            window.location.reload()
+            setTimeout(function (){
+                window.location.reload();
+            }, 500);
           }
 
         return (
