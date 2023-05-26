@@ -34,6 +34,11 @@ export const OneItem = ({itemReturn}) => {
           headers: {"Content-type" : "application/json"},
           body: JSON.stringify(newItem)
         });
+
+        setTimeout(function (){
+            window.location.reload();
+        }, 500);
+
     
         setNewPost(true)
         setTitle("");
@@ -68,11 +73,17 @@ export const OneItem = ({itemReturn}) => {
         return <></>
     // once item has been deleted variable is going to be true
     }else if(itemsBeenDeleted){
-        return <>Item is successfully Deleted!</>
+        setTimeout(function (){
+            window.location.reload();
+        }, 1000);
+        return <div className="deleteMessage">Item successfully deleted!</div>
+
+
+
     } else {
         return (
             <>
-                <div className = "products">
+                <div className = "productsOneItem">
                     <h3>Item Stock Number {itemReturn.id}</h3>
                     <img className="itemImg" src={itemReturn.image} alt={itemReturn.name} />
                     <h2>{itemReturn.title}</h2>
