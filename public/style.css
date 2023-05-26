@@ -38,7 +38,30 @@
   padding: 2em;
   font-size: large;
   font-weight: bold;
+  background-color: rgb(223, 223, 223);
   color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.menuButton:hover {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.menuButton:active {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  background-color: lightslategray;
   border: 2px solid lightslategray;
   border-radius: 6px;
 }
@@ -50,6 +73,28 @@
   font-weight: bold;
   color: white;
   background-color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.menuAddButton:hover {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  background-color: rgb(223, 223, 223);
+  color: lightslategray;
+  border: 2px solid lightslategray;
+  border-radius: 6px;
+}
+
+.menuAddButton:active {
+  height: 5em;
+  padding: 2em;
+  font-size: large;
+  font-weight: bold;
+  background-color: rgb(223, 223, 223);
+  color: lightslategray;
   border: 2px solid lightslategray;
   border-radius: 6px;
 }

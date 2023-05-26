@@ -94,7 +94,7 @@ export const OneItem = ({itemReturn}) => {
                                 <form onSubmit = {submitHandler}>
                                     <input 
                                             type = "text" 
-                                            placeholder = "Title" 
+                                            placeholder = "title"
                                             value = {title}
                                             onChange = {(e) => setTitle(e.target.value)}
                                         />
