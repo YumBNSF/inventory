@@ -90,8 +90,8 @@ export const OneItem = ({itemReturn}) => {
                     <p>{itemReturn.description}</p>
                     <h3>${itemReturn.price}</h3>
                     <div>
-                        <button onClick={handleOpen}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <button className = "threeDotButton" onClick={handleOpen}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="lightslategray"
                                  className="bi bi-three-dots" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>

@@ -38,7 +38,7 @@ function Form({setNewItem})
           }
 
         return (
-                <form onSubmit = {submitHandler}>
+                <form className = "form" onSubmit = {submitHandler}>
                     <input 
                         type = "text" 
                         placeholder = "Title" 

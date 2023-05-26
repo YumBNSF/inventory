@@ -128,8 +128,6 @@
 }
 
 .submitButton {
-  height: .5em;
-  padding: 1em;
   font-size: large;
   font-weight: bold;
   text-align: center;
@@ -141,8 +139,7 @@
 }
 
 .deleteEditButton {
-  height: .5em;
-  padding: 1em;
+
   font-size: large;
   font-weight: bold;
   text-align: center;
@@ -173,5 +170,15 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 5%;
+}
 
+.threeDotButton {
+  border: none;
+
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
