@@ -9,11 +9,11 @@ export const OneItem = ({itemReturn}) => {
     const [open, setOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false); 
     const [itemsBeenDeleted, setItemsBeenDeleted] = useState(false)
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
-    const [image, setImage] = useState("");
-    const [price, setPrice] = useState("");
+    const [title, setTitle] = useState(itemReturn.title);
+    const [description, setDescription] = useState(itemReturn.description);
+    const [category, setCategory] = useState(itemReturn.category);
+    const [image, setImage] = useState(itemReturn.image);
+    const [price, setPrice] = useState(itemReturn.price);
     const[newPost, setNewPost] = useState(false);
 
 
@@ -108,30 +108,35 @@ export const OneItem = ({itemReturn}) => {
                                             placeholder = "Title" 
                                             value = {title}
                                             onChange = {(e) => setTitle(e.target.value)}
+                                            defaultValue={itemReturn.title}
                                         />
                                         <input
                                             type = "text" 
                                             placeholder = "Description" 
                                             value = {description}
                                             onChange = {(e) => setDescription(e.target.value)}
+                                            defaultValue={itemReturn.description}
                                         />
                                         <input
                                             type = "text" 
                                             placeholder="Category" 
                                             value = {category}
                                             onChange = {(e) => setCategory(e.target.value)}
+                                            defaultValue={itemReturn.category}
                                         />  
                                         <input
                                             type = "text" 
                                             placeholder="Image" 
                                             value = {image}
                                             onChange = {(e) => setImage(e.target.value)}
+                                            defaultValue={itemReturn.image}
                                         />            
                                         <input
                                             type = "text" 
                                             placeholder="Price" 
                                             value = {price}
                                             onChange = {(e) => setPrice(e.target.value)}
+                                            defaultValue={itemReturn.price}
                                         />                  
                     <button type = "Submit">Submit</button>
                     </form>):(<div></div>)}
