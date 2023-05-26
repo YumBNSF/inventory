@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import {ItemList} from "./ItemList";
-import apiURL from '../api';
-
+import React from 'react';
 
 export const Item = (props) => {
 

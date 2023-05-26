@@ -16,16 +16,18 @@ export const App = () => {
 	const [isElectronicsVisible, setIsElectronicsVisible] = useState(false);
 	const [open, setOpen] = useState(false);
 
-// Use states used with Form to ADD item
+	// Use states used with Form to ADD item
 	const[newItem, setNewItem] = useState(false);
 
 
-	// Fetch either all items or by category
+	// Fetch either all items
 	async function fetchItems(){
 		const response = await fetch(`${apiURL}/items`);
 		const categoryData = await response.json();
 		setCategory(categoryData);
 	}
+
+	// Fetch items by category
 	async function fetchCategory(category){
 		try {
 
@@ -43,20 +45,17 @@ export const App = () => {
 			console.log("Oh no an error! ", err)
 		}
 	}
+
 	const handleOpen = () => {
 		setOpen(!open);
 	};
+
+
 	// Any change to a ther page Use Effect is updated updated by fetch the api
 	useEffect(() => {
 		fetchItems();
 	}, []);
 
-	/* still need to fix view so that only one item is on screen when selected
-	// TODO:
-			pass the useState as a prop  
-			const [isOneItemVisible, setIsOneItmeVisible] = useState(false); <-- this is on ItemList currently
-			add to the button for individual item
-			*/
 	return (
 		<main>
 			<h1 className="title">Flavorful Freighter's Inventory</h1>
@@ -72,11 +71,6 @@ export const App = () => {
 				) :(<></>)}
 
 			</div>
-			{/*{window.onload = async () =>{*/}
-			{/*	const response = await fetch(`${apiURL}/items`);*/}
-			{/*	const categoryData = await response.json();*/}
-			{/*	setCategory(categoryData);*/}
-			{/*}}*/}
 
 			<ItemList items={category}/>
 		</main>
