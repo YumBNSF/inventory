@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Item } = require("../models");
+const checkInputValues = require("../middleware/checkInputValues");
 
 // GET /items  all items
 router.get("/", async (req, res, next) => {
@@ -33,7 +34,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // POST adding an item
-router.post("/", async (req, res, next) => {
+router.post("/", checkInputValues, async (req, res, next) => {
     try{
         const [item, created] = await Item.findOrCreate( {
             where: {title: req.body.title},
@@ -60,7 +61,7 @@ router.post("/", async (req, res, next) => {
 })
 
 // PUT updating an item
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", checkInputValues, async (req, res, next) => {
     try{
         const item = await Item.update(req.body,{
             where: {id: req.params.id},
