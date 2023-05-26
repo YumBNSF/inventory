@@ -12,7 +12,7 @@ export const ItemList = ({items}) => {
     for(let i = 0; i < itemArray.length; ++i){
      if(i === indexOfItem){
         setItemReturn(itemArray[i]);
-         return(<><h1>hi</h1></>)
+        window.scroll(0,0)
      }
     }
    }
