@@ -8,7 +8,7 @@ import apiURL from '../api';
 export const App = () => {
 
 	// Setting Use States for category and visiblilty
-	const [title, setTitle] = useState("Flavorful Freighter's Inventory")
+	const [title, setTitle] = useState("All Categories")
 	const [category, setCategory] = useState([]);
 	const [isCategoryVisible, setIsCategoryVisible] = useState(false);
 	const [isMenClothingVisible, setIsMenClothingVisible] = useState(false);
@@ -62,7 +62,8 @@ export const App = () => {
 
 	return (
 		<main>
-			<h1 className="title">{title}</h1>
+			<h1 className="title">Flavorful Freighter's Inventory</h1>
+			<h3 className="title">{title}</h3>
 			<div className="inventoryButtons">
 				<button className = "menuButton" onClick={() => {fetchCategory(""), setIsCategoryVisible(!isCategoryVisible)}}>{isCategoryVisible ? 'All Categories' : 'All Categories'}</button>
 				<button className = "menuButton" onClick={() => {fetchCategory("men's clothing"), setIsMenClothingVisible(!isMenClothingVisible)}}>{isMenClothingVisible ? "Men's Clothing" : "Men's Clothing"}</button>
